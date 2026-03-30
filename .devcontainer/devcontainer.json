@@ -1,0 +1,32 @@
+{
+  "name": "MiroFish",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    }
+  },
+  "onCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && sudo ln -sf $HOME/.local/bin/uv /usr/local/bin/uv",
+  "postCreateCommand": "npm run setup:all",
+  "forwardPorts": [3000, 5001],
+  "portsAttributes": {
+    "3000": {
+      "label": "Frontend",
+      "onAutoForward": "openBrowser"
+    },
+    "5001": {
+      "label": "Backend",
+      "onAutoForward": "notify"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  }
+}
